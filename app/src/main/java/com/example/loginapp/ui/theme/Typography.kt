@@ -16,27 +16,27 @@ data class CustomTypography(
 
 val defaultCustomTypography = CustomTypography(
     header = TextStyle(
-        fontSize = 32.sp,
+        fontSize = 40.sp,
         fontWeight = FontWeight.Bold,
         letterSpacing = (-0.5).sp
     ),
     title = TextStyle(
-        fontSize = 20.sp,
+        fontSize = 24.sp,
         fontWeight = FontWeight.SemiBold,
         letterSpacing = (-0.25).sp
     ),
     body = TextStyle(
-        fontSize = 17.sp,
+        fontSize = 20.sp,
         fontWeight = FontWeight.Normal,
         letterSpacing = 0.sp
     ),
     caption = TextStyle(
-        fontSize = 13.sp,
+        fontSize = 15.sp,
         fontWeight = FontWeight.Normal,
         color = Color.Unspecified
     ),
     button = TextStyle(
-        fontSize = 17.sp,
+        fontSize = 20.sp,
         fontWeight = FontWeight.SemiBold,
         letterSpacing = 0.25.sp
     )

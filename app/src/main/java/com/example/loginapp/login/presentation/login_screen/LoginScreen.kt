@@ -1,31 +1,87 @@
 package com.example.loginapp.login.presentation.login_screen
 
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
+import com.example.loginapp.R
+import com.example.loginapp.login.presentation.login_screen.components.LoginCard
+import com.example.loginapp.ui.theme.LocalTheme
+import com.example.loginapp.ui.theme.LocalTypography
+import com.example.loginapp.ui.theme.LoginAppTheme
 
 @Composable
 fun LoginScreen(
-
+    state: LoginScreenState,
+    onUsernameInput: (String) -> Unit,
+    onPasswordInput: (String) -> Unit
 ) {
+    val theme = LocalTheme.current
+    val typography = LocalTypography.current
+
     Scaffold(
-        modifier = Modifier.fillMaxSize()
+
     ) { innerPadding ->
         Column(
             modifier = Modifier
-                .padding(innerPadding),
+                .fillMaxSize()
+                .padding(innerPadding)
+                .background(theme.surface),
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
+            Icon(
+                painter = painterResource(R.drawable.youji_icon),
+                contentDescription = stringResource(R.string.youji_icon),
+                tint = theme.textPrimary,
+                modifier = Modifier.size(300.dp)
+            )
 
+            Text(
+                text = "Youji",
+                style = typography.header,
+                color = theme.textPrimary
+            )
+
+            Spacer(modifier = Modifier.height(32.dp))
+
+            LoginCard(
+                state = state,
+                onUsernameInput = onUsernameInput,
+                onPasswordInput = onPasswordInput
+            )
         }
+    }
+}
+
+@PreviewLightDark
+@Composable
+private fun LoginScreenPreview() {
+    LoginAppTheme {
+        LoginScreen(
+            state = LoginScreenState(
+
+            ),
+            onUsernameInput = {},
+            onPasswordInput = {}
+        )
     }
 }
