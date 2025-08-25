@@ -25,7 +25,7 @@ import com.example.loginapp.ui.theme.LocalTypography
 import com.example.loginapp.ui.theme.LoginAppTheme
 
 @Composable
-fun LoginScreen(
+fun LoginScreenUi(
     state: LoginScreenState,
     onUsernameInput: (String) -> Unit,
     onPasswordInput: (String) -> Unit
@@ -72,7 +72,7 @@ fun LoginScreen(
 @Composable
 private fun LoginScreenPreview() {
     LoginAppTheme {
-        LoginScreen(
+        LoginScreenUi(
             state = LoginScreenState(
 
             ),
