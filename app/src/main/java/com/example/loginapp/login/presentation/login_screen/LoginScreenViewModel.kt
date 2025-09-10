@@ -16,21 +16,36 @@ class LoginScreenViewModel(): ViewModel() {
                 TODO()
             }
             is LoginScreenAction.OnUsernameInput -> {
-                _state.update {
-                    it.copy(
-                        usernameField = action.usernameInput,
-                        isUsernameError = action.usernameInput.length < 5
-                    )
-                }
+                updateLoginState(usernameInput = action.usernameInput)
             }
             is LoginScreenAction.OnPasswordInput -> {
-                _state.update {
-                    it.copy(
-                        passwordField = action.passwordInput,
-                        isPasswordError = action.passwordInput.length < 3
-                    )
-                }
+                updateLoginState(passwordInput = action.passwordInput)
             }
+        }
+    }
+
+    private fun updateLoginState(
+        usernameInput: String? = null,
+        passwordInput: String? = null
+    ) {
+        _state.update { current ->
+            val newUsername = usernameInput ?: current.usernameField
+            val newPassword = passwordInput ?: current.passwordField
+
+            val usernameError = newUsername.length < 5
+            val passwordError = newPassword.length < 3
+            val loginEnabled = newUsername.isNotBlank() &&
+                    newPassword.isNotBlank() &&
+                    !usernameError &&
+                    !passwordError
+
+            current.copy(
+                usernameField = newUsername,
+                passwordField = newPassword,
+                isUsernameError = usernameError,
+                isPasswordError = passwordError,
+                isLoginEnabled = loginEnabled
+            )
         }
     }
 }

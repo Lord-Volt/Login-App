@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -19,6 +20,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 import com.example.loginapp.R
+import com.example.loginapp.login.presentation.login_screen.components.LoginButton
 import com.example.loginapp.login.presentation.login_screen.components.LoginCard
 import com.example.loginapp.ui.theme.LocalTheme
 import com.example.loginapp.ui.theme.LocalTypography
@@ -34,13 +36,13 @@ fun LoginScreenUi(
     val typography = LocalTypography.current
 
     Scaffold(
-
+        modifier = Modifier.fillMaxSize(),
+        containerColor = theme.surface
     ) { innerPadding ->
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(innerPadding)
-                .background(theme.surface),
+                .padding(innerPadding),
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
